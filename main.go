@@ -8,12 +8,12 @@ import "C"
 type Person C.Person
 
 //export GetPerson
-func GetPerson() C.Person {
+func GetPerson() Person {
 	var person Person
 	person.Name = C.CString("Vinicio Valbuena")
 	person.Age = 28
 
-	return ((C.Person)(person))
+	return person
 }
 
 func main() {
