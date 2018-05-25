@@ -25,7 +25,7 @@ void TestStructReturn() {
 	printf("Name: %s\n", person.Name);
 	printf("Age: %d\n", person.Age);
 
-	person.Byte = (uint8_t*)(malloc(sizeof(uint8_t)*4));
+	person.Byte = (uint8_t*)(malloc(sizeof(uint8_t)*person.Length));
 
 	TestPrintByte(person.Byte);
 }

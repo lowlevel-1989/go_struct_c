@@ -27,13 +27,14 @@ func main() {
 	var person Person
 	person.Name = C.CString("Vinicio Valbuena")
 	person.Age = 28
-	person.Length = (C.uint32_t)(len(b))
-	person.Byte = (*C.uint8_t)(C.malloc( 8*(C.size_t)(len(b)) ))
+	person.Length = (C.size_t)(len(b))
+	person.Byte = (*C.uint8_t)(C.malloc( C.sizeof_uint8_t * person.Length ))
+
 
 	defer C.free(unsafe.Pointer(person.Byte))
 
 
-	C.memcpy(unsafe.Pointer(person.Byte), unsafe.Pointer(&b), (C.size_t)(len(b)));
+	C.memcpy(unsafe.Pointer(person.Byte), unsafe.Pointer(&b), person.Length);
 
 	fmt.Println("Test in Go")
 	fmt.Printf("Name: %s\n", C.GoString(person.Name))

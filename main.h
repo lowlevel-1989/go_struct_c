@@ -4,7 +4,7 @@ typedef struct {
 	char *Name;
 	int Age;
 	uint8_t *Byte;
-	uint32_t Length;
+	size_t Length;
 } Person;
 
 extern Person GetPerson();
