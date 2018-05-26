@@ -12,7 +12,7 @@ void TestStrucInC(Person *person) {
 	time_t local_birthday = mktime(gmtime(&person->Birthday));
 
 	printf("[UTC-0] GO Unix Birthday: %d\n", person->Birthday);
-	printf("[UTC-LOCAL] GO->C Birthday: %s\n", ctime(&local_birthday));
+	printf("[UTC-LOCAL] GO->C Birthday: %s", ctime(&local_birthday));
 
 	TestPrintByte(person->Byte);
 }
@@ -42,7 +42,7 @@ void TestStructReturn() {
 	printf("Name: %s\n", person.Name);
 	printf("Age: %d\n", person.Age);
 	printf("[UTF-0] C Unix Birthday: %d\n", person.Birthday);
-	printf("[UTF-LOCAL] C Birthday: %s\n", ctime(&local_birthday));
+	printf("[UTF-LOCAL] C Birthday: %s", ctime(&local_birthday));
 
 	person.Byte = (uint8_t*)(malloc(sizeof(uint8_t)*person.Length));
 	memset(person.Byte, 0, person.Length);
