@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <time.h>
 
+#define PI 3.14
+
 typedef struct {
 	char *Name;
 	int Age;
