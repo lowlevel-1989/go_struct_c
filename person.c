@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "main.h"
+#include "person.h"
 
 void TestStrucInC(Person *person) {
 	printf("Test in C\n");

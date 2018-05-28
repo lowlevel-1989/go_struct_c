@@ -9,7 +9,7 @@ import (
 // #include <stdlib.h>
 // #include <time.h>
 // #include <string.h>
-// #include "main.h"
+// #include "person.h"
 import "C"
 
 type Person C.Person
