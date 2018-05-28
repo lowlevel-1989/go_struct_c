@@ -12,6 +12,13 @@ import (
 // #include "person.h"
 import "C"
 
+// https://golang.org/src/runtime/slice.go
+type slice struct {
+	array unsafe.Pointer
+	len   int
+	cap   int
+}
+
 type Person C.Person
 
 //export GetPerson
@@ -24,7 +31,7 @@ func GetPerson() Person {
 }
 
 func main() {
-	var b [4]byte = [4]byte{1, 2, 3, 4}
+	var b []byte = []byte{1, 2, 3, 4}
 
 	now := time.Now()
 
@@ -48,7 +55,25 @@ func main() {
 
 	defer C.free(unsafe.Pointer(person.Byte))
 
-	C.memcpy(unsafe.Pointer(person.Byte), unsafe.Pointer(&b), person.Length);
+	C.memcpy(unsafe.Pointer(person.Byte), unsafe.Pointer(&b[0]), person.Length);
+
+	// C -> Go slice
+	s := slice{
+		unsafe.Pointer(person.Byte),
+		int(person.Length),
+		int(person.Length),
+	}
+
+	// ref https://halfrost.com/go_slice/
+
+	data := *(*[]byte)(unsafe.Pointer(&s))
+
+	fmt.Println("C->Go slice")
+	fmt.Println("[C] ",person.Byte)
+	fmt.Printf("[GO] %p\n", &data[0])
+	fmt.Println(data)
+	fmt.Println()
+
 
 	fmt.Println("Test in Go")
 	fmt.Printf("Name: %s\n", C.GoString(person.Name))
