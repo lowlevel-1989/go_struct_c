@@ -41,7 +41,10 @@ func main() {
 	// utc 0
 	fmt.Println(now.UTC())
 	fmt.Println()
-	fmt.Printf("COST C->PI: %v\n\n", C.PI)
+	fmt.Printf("COST C->PI: %v\n", C.PI)
+	fmt.Printf("COST C->KB: %v\n", C.KB)
+	fmt.Printf("COST C->MB: %v\n", C.MB)
+	fmt.Printf("COST C->GB: %v\n\n", C.GB)
 
 	var birthday time.Time = time.Date(
 		1989, time.November, 03, 0, 0, 0, 0, time.UTC)
